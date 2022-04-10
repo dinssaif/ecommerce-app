@@ -8,18 +8,23 @@ import { Route, Routes } from "react-router-dom";
 import ProductPage from "./pages/ProductPage";
 import Container from "./components/Container";
 import { useDispatch } from "react-redux";
-import { getData } from "./store/productsDataSlice";
+import { setProductsData } from "./store/productsDataSlice";
 import { useEffect } from "react";
 import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage";
 import LogInPage from "./pages/LogInPage";
 import ScrollToTop from "./components/ScrollToTop";
+import data from './mystore-api.json'
 
 function App() {
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getData());
+  // }, [dispatch]);
+
   useEffect(() => {
-    dispatch(getData());
+    dispatch(setProductsData(data));
   }, [dispatch]);
 
   return (

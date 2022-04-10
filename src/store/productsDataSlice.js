@@ -12,17 +12,23 @@ const productDataSlice = createSlice({
     data: [],
     state: null,
   },
-  extraReducers: {
-    [getData.pending]: (state, actions) => {
-      state.state = "sending";
-    },
-    [getData.fulfilled]: (state, actions) => {
-      state.state = "success";
-      state.data = Object.values(actions.payload);
-    },
-    [getData.rejected]: (state, actions) => {
-      state.state = "failed";
-    },
-  },
+  // extraReducers: {
+  //   [getData.pending]: (state, actions) => {
+  //     state.state = "sending";
+  //   },
+  //   [getData.fulfilled]: (state, actions) => {
+  //     state.state = "success";
+  //     state.data = Object.values(actions.payload);
+  //   },
+  //   [getData.rejected]: (state, actions) => {
+  //     state.state = "failed";
+  //   },
+  // },
+  reducers:{
+    setProductsData(state, actions){
+      state.data = Object.values(actions.payload[0].bydate)
+    }
+  }
 });
+export const {setProductsData}= productDataSlice.actions
 export default productDataSlice.reducer;
